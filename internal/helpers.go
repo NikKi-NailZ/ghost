@@ -147,6 +147,10 @@ func (a *App) checkForParse(fileName string, allowedFowParse ...string) bool {
 }
 
 func (a App) runCommands() {
-	exec.Command("go", "mod", "init", a.data.AppName).Run()
-	exec.Command("go", "mod", "tidy").Run()
+	modCMD := exec.Command("go", "mod", "init", a.data.AppName)
+	modCMD.Dir = a.data.AppName
+	modCMD.Run()
+	modCMD = exec.Command("go", "mod", "tidy")
+	modCMD.Dir = a.data.AppName
+	modCMD.Run()
 }
