@@ -4,13 +4,13 @@
 *.dll
 *.so
 *.dylib
-tx-history
+ghost
 __debug_bin
 build/
 
 # IDEs and OS
 .idea/
-.vscode/
+.vscode
 .run/
 .DS_Store
 
@@ -34,5 +34,4 @@ vendor/
 # Structure
 !.keep
 database.yaml
-
-test_workspace/
+test_workspace
