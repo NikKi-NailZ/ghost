@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"os"
 
 	app "ghost/internal"
 )
@@ -10,5 +11,5 @@ import (
 var templates embed.FS
 
 func main() {
-	app.New("test_workspace/test_app").WithTemplates(templates).Run()
+	app.New(os.Args[1]).WithTemplates(templates).Run()
 }
