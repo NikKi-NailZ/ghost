@@ -1,0 +1,16 @@
+FROM golang:1.16 AS builder
+
+ARG PROJECT_NAME={{.AppName}}
+
+WORKDIR /app
+
+COPY . /app/
+
+RUN go build -ldflags=" \
+  -X main.appName=$PROJECT_NAME \
+  -X main.version=1.0.0 \
+  -X main.tag=$(shell git describe --abbrev=0 --tags) \
+  -X main.commit=$(shell git rev-parse HEAD)" \
+  -o /app/${PROJECT_NAME} /app/cmd/main.go
+
+ENTRYPOINT [ "/app/{{.AppName}}" ]
