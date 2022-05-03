@@ -1,4 +1,4 @@
-module ghost
+module github.com/NikKi-NailZ/ghost
 
 go 1.18
 

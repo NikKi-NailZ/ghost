@@ -4,7 +4,7 @@ import (
 	"embed"
 	"os"
 
-	app "ghost/internal"
+	app "github.com/NikKi-NailZ/ghost/internal"
 )
 
 //go:embed templates/*
