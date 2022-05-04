@@ -1,3 +1,6 @@
+{{if .Copyright}}
+    {{.Copyright}}
+{{end}}
 package app
 
 // registerServices register services in app struct.

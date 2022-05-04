@@ -1,5 +1,15 @@
+{{if .Copyright}}
+    {{.Copyright}}
+{{end}}
 package delivery
 
-type ( // TODO: add status handler
+import (
+	"github.com/gofiber/fiber/v2"
+)
 
+type (
+	// StatusHTTP – describes an interface for work with service status over HTTP.
+	StatusHTTP interface {
+		CheckStatus(ctx *fiber.Ctx) error
+	}
 )

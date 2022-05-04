@@ -9,3 +9,6 @@ mod:
 
 clean:
 	rm -rf test_workspace/*
+
+install:
+	go install
