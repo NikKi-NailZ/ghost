@@ -1,11 +1,14 @@
+{{if .Copyright}}
+    {{.Copyright}}
+{{end}}
 package app
 
 import (
 	"context"
 	"errors"
+	"log"
 	"net/http"
 
-	mwLogger "git.ooo.ua/vipcoin/lib/http/middleware/logger"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/gofiber/fiber/v2/middleware/requestid"
@@ -34,7 +37,7 @@ func serveHTTP(ctx context.Context, app *App) {
 		<-ctx.Done()
 
 		if err := router.Shutdown(); err != nil {
-			app.logger.Info("🔵 http: server shutdown: %v", err)
+			log.Println("🔵 http: server shutdown: %v", err) // TODO: add app logger``
 		}
 	}()
 
@@ -42,7 +45,7 @@ func serveHTTP(ctx context.Context, app *App) {
 	ip := app.config.Delivery.HTTPServer.ListenAddress
 	if err := router.Listen(ip); err != nil {
 		if !errors.Is(err, http.ErrServerClosed) {
-			app.logger.Fatalf("🔴 failed to start server: %v", err)
+			log.Fatal("🔴 failed to start server: %v", err) // TODO: add app logger``
 		}
 	}
 }

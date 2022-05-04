@@ -1,3 +1,6 @@
+{{if .Copyright}}
+    {{.Copyright}}
+{{end}}
 package main
 
 import (

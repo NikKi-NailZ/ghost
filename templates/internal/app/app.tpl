@@ -1,4 +1,15 @@
+{{if .Copyright}}
+    {{.Copyright}}
+{{end}}
 package app
+
+import (
+	"context"
+	"embed"
+
+	"{{.AppName}}/internal/config"
+	"{{.AppName}}/internal/api/delivery"
+)
 
 type (
    	// Meta defines meta for application.
@@ -24,16 +35,15 @@ type (
 
 		// tech dependencies
 		config *config.Config
-		logger log.Logger
 
 		dbMigrationsFS embed.FS
-		db             *sqlx.DB
 
 		// Repository dependencies.
 
 		// services
 
 		// Delivery dependencies.
+		statusHTTPHandler delivery.StatusHTTP
 
 		// Scheduler dependencies.
 	}

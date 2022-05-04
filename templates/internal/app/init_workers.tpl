@@ -1,6 +1,12 @@
+{{if .Copyright}}
+    {{.Copyright}}
+{{end}}
 package app
 
-import "context"
+import (
+	"context"
+	"log"
+)
 
 // InitWorkers ...
 func (a *App) initWorkers() []worker {
@@ -12,7 +18,7 @@ func (a *App) initWorkers() []worker {
 		workers = append(
 			workers,
 			func(ctx context.Context, a *App) {
-				a.logger.Info("Welcome into DevMode Environment")
+				log.Println("Welcome into DevMode Environment") // TODO: change on app logger
 			},
 		)
 	}
